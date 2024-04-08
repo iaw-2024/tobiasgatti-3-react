@@ -4,7 +4,6 @@ const cors = require("cors");
 const app = express();
 
 app.use(cors());
-app.use(express.static(path.join(__dirname, '../client/build')));
 
 const chiliPeppersSongs = [
     {
@@ -44,6 +43,7 @@ const chiliPeppersSongs = [
 app.get("/datos", (req, res) => {
     res.json(chiliPeppersSongs);
 });
+app.use(express.static(path.join(__dirname, '../client/build')));
 
 app.listen(3001, () => console.log("Server ready on port 3001."));
 
