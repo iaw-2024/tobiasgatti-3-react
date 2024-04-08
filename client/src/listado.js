@@ -1,22 +1,27 @@
 import React, { useState, useEffect } from 'react';
+import './Estilo.css';
 
 function ListadoTareas() {
-    const [tareas, setTareas] = useState([]);
+    const [canciones, setCanciones] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3001/datos')
+        fetch('/datos')
             .then(res => res.json())
             .then(data => {
-                setTareas(data);
+                setCanciones(data);
             })
             .catch(error => console.error('Error:', error));
     }, []);
 
     return (
-        <div>
-            <ul>
-                {tareas.map(tarea => (
-                    <li key={tarea.id}>{tarea.name}</li>
+        <div className="listado-canciones-container">
+             <ul className='listado-canciones'>
+                {canciones.map(cancion => (
+                <li key={cancion.year} >
+                    <strong>Title:</strong> {cancion.title} <br />
+                    <strong>Album:</strong> {cancion.album} <br />
+                    <strong>Year:</strong> {cancion.year}
+                </li>
                 ))}
             </ul>
         </div>

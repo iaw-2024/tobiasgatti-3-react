@@ -1,10 +1,11 @@
 import React from 'react';
+import './Estilo.css';
 
 function NavBar() {
     return (
-        <nav>
+        <nav className='navbar-container'>
             <ul>
-                <li><a href="/">Inicio</a></li>
+                <li className='items'><a href="https://www.rhcplivearchive.com/">RHCP ARCHIVE PAGE</a></li>
             </ul>
         </nav>
     );
