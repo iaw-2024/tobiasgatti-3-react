@@ -1,9 +1,9 @@
 const express = require("express");
 const path = require("path");
-const cors = require("cors");
 const app = express();
+const cors = require("cors");
 
-app.use(cors());
+app.use(cors({ origin: "*" }));
 
 const chiliPeppersSongs = [
     {
@@ -45,6 +45,6 @@ app.get("/datos", (req, res) => {
 });
 app.use(express.static(path.join(__dirname, '../client/build')));
 
-app.listen(3001, () => console.log("Server ready on port 3001."));
-
+const port = process.env.PORT || 3001;
+app.listen(port, () => console.log(`Server ready on port ${port}.`));
 module.exports = app;
